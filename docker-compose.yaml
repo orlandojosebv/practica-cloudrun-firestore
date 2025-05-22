@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./:/app
+      # Monta la clave JSON dentro del contenedor (Ve a la carpeta de secretos y revisa el readme)
+      - ./secrets/key.json:/secrets/key.json:ro
+    environment:
+      - PORT=8080
+      - GOOGLE_APPLICATION_CREDENTIALS=/secrets/key.json
+      - GOOGLE_CLOUD_PROJECT=nube-2025-i # Reemplaza con TU proyecto
+      - FIRESTORE_DATABASE=db-notes # Reemplaza con TU base de datos
+    command: uvicorn app.main:app --host 0.0.0.0 --port ${PORT} --reload
