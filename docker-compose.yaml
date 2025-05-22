@@ -11,6 +11,6 @@ services:
     environment:
       - PORT=8080
       - GOOGLE_APPLICATION_CREDENTIALS=/secrets/key.json
-      - GOOGLE_CLOUD_PROJECT=nube-2025-i # Reemplaza con TU proyecto
-      - FIRESTORE_DATABASE=db-notes # Reemplaza con TU base de datos
+      - GOOGLE_CLOUD_PROJECT=credible-bridge-385514 # Reemplaza con TU id del proyecto credible-bridge-385514
+      - FIRESTORE_DATABASE=nube-2025-i # Reemplaza con TU nombre base de datos
     command: uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload
